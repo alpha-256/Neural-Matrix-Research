@@ -2,6 +2,8 @@ from random import randint as ri
 from pprint import pprint
 
 neuralMatrix = []
+rowIOLog = []
+columnIOLog = []
 
 def createCleanMatrix(layerCount, size):
     for layer in range(layerCount):
@@ -21,7 +23,20 @@ def createCleanMatrix(layerCount, size):
 
 def mutateAddInput():
     for layer in range(len(neuralMatrix)):
-        neuralMatrix[layer][ri(1, size-1)][ri(1, size-1)] = "I"
+        x = int(ri(1, size-1))
+        y = int(ri(1, size-1))
+        rowIOLog.append(x)
+        columnIOLog.append(y)
+        neuralMatrix[layer][x][y] = "I"
+
+def connectLayerIO():
+    index  = 0
+    matrixLayers = range(len(neuralMatrix))
+    while index <= matrixLayers:
+        layer = index
+        x = rowIOLog[index]
+        y = columnIOLog[index]
+        neuralMatrix[layer][x][y] = "I"
 
 def debugPrint():
     #print(neuralMatrix)
@@ -51,3 +66,15 @@ print("After", "\n")
 debugPrint()
 print("\n")
 cleanPrint()
+connectLayerIO()
+print("Before", "\n")
+print("###############", "\n")
+print("After", "\n")
+debugPrint()
+print("\n")
+cleanPrint()
+
+
+
+
+#END
