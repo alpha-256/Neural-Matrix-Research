@@ -60,12 +60,35 @@ def create3OutputCells():
         IOLog.append(tempLog[layer])
 
 def connectIO():
+    holdY = int()
+    holdX = int()
     for layer in range(len(IOLog)):
         for index in range(len(IOLog[layer])):
             for coordinates in range(len(IOLog[layer][index])):
-                print(IOLog[layer][index][0])
-                print(IOLog[layer][index][1])
-            print("\n")
+                print(IOLog[layer][index][coordinates])
+                if coordinates == 0:
+                    holdY = int(IOLog[layer][index][coordinates])
+                elif coordinates == 1:
+                    holdX = int(IOLog[layer][index][coordinates])
+                else:
+                    raise Exception("OUT OF RANGE!")
+
+                if coordinates == 0:
+                    holdY = int(IOLog[layer][index][coordinates])
+                elif coordinates == 1:
+                    holdX = int(IOLog[layer][index][coordinates])
+                else:
+                    raise Exception("OUT OF RANGE!")
+                for matrixLayers in range(len(pathMatrix)):
+                    if matrixLayers < layerCount:
+                        matrixLayers += 1
+                        print(matrixLayers)
+                        pathMatrix[matrixLayers][holdY][holdX] = "I"
+                        matrixLayers -= 1
+                    elif matrixLayers >= layerCount:
+                        pass
+                    else:
+                        pass
 
     #tempYIndex = yLog[len(yLog)]
     #tempXIndex = xLog[len(xLog)]
@@ -92,6 +115,8 @@ size = int(input("Size: "))
 createCleanMatrix(layerCount, size)
 createFirstInput()
 
+cleanPrint()
+
 createPaths()
 create3OutputCells()
 
@@ -100,10 +125,9 @@ print(IOLog)
 
 connectIO()
 
-cleanPrint()
-print(" Before \n ###### \n After \n")
-cleanPrint()
-print(IOLog)
+#cleanPrint()
+#print(" Before \n ###### \n After \n")
+#cleanPrint()
 
 debugPrint()
 
