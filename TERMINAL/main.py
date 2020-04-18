@@ -125,12 +125,7 @@ print(IOLog)
 
 connectIO()
 
-#cleanPrint()
-#print(" Before \n ###### \n After \n")
-#cleanPrint()
-
-debugPrint()
-
+cleanPrint()
 
 
 
