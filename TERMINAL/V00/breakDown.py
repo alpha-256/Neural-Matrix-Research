@@ -64,26 +64,30 @@ def print_all_layers(pathMatrix, size):
 
     return
 
+layerCount = None
+size = None
+ruleMatrix = None
 
 def _main():
-
+    global layerCount
+    global size
     layerCount = int(input("Layer count > "))
     size = int(input("Size > "))
 
-    base = createBaseMatrix(layerCount, size*size)
-    createOutputCells(base, 3)
-    createInputCells(base)
+    global ruleMatrix
+    ruleMatrix = createBaseMatrix(layerCount, size*size)
+    createOutputCells(ruleMatrix, 3)
+    createInputCells(ruleMatrix)
 
     print("Generated Layer")
-    print_all_layers(base, size)
+    print_all_layers(ruleMatrix, size)
     print("---")
 
-    connectIOCells(base)
+    connectIOCells(ruleMatrix)
 
     print("Connected Layer")
-    print_all_layers(base, size)
+    print_all_layers(ruleMatrix, size)
     print("---")
-
 
 if __name__ == "__main__":
     _main()
